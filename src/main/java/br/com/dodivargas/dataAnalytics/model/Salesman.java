@@ -1,12 +1,12 @@
 package br.com.dodivargas.dataAnalytics.model;
 
-public class SalesMan implements Model {
+public class Salesman implements Model {
 
     private String cpf;
     private String name;
     private String salary;
 
-    public SalesMan(String cpf, String name, String salary) {
+    public Salesman(String cpf, String name, String salary) {
         this.cpf = cpf;
         this.name = name;
         this.salary = salary;

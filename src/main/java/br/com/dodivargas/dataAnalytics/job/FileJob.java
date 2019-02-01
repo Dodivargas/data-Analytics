@@ -36,7 +36,8 @@ public class FileJob {
                                     .filter(StringUtils::isNotBlank)
                                     .map(x -> processorService.processorLine(x))
                                     .filter(Optional::isPresent)
-                                    .collect(Collectors.toList()).forEach(System.out::println);
+                                    .collect(Collectors.toList())
+                                    .forEach(System.out::println);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
