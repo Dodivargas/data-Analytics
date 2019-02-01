@@ -1,7 +1,7 @@
 package br.com.dodivargas.dataAnalytics.factory.parser;
 
-import br.com.dodivargas.dataAnalytics.model.Customer;
 import br.com.dodivargas.dataAnalytics.model.Model;
+import br.com.dodivargas.dataAnalytics.model.SalesMan;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -9,14 +9,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
-public class CustomerParse implements LineParse {
+public class SalesManParser implements LineParser {
 
-    private static final String CUSTOMER_PATTERN = "^(002)ç([0-9]{16})ç([\\s\\S]+)ç([\\s\\S]+)";
+    private static final String SALESMAN_PATTERN = "^(001)ç([0-9]{13})ç([\\s\\S]+)ç([0-9]*\\.?[0-9]+)";
 
     @Override
     public Optional<Model> parse(String line) {
         Matcher matcher = getMatcher(line);
-        return Optional.of(new Customer(matcher.group(1), matcher.group(2), matcher.group(3)));
+        return Optional.of(new SalesMan(matcher.group(1), matcher.group(2), matcher.group(3)));
     }
 
     @Override
@@ -25,9 +25,10 @@ public class CustomerParse implements LineParse {
     }
 
     private Matcher getMatcher(String line) {
-        Pattern pattern = Pattern.compile(CUSTOMER_PATTERN);
+        Pattern pattern = Pattern.compile(SALESMAN_PATTERN);
         Matcher matcher = pattern.matcher(line);
         matcher.find();
         return matcher;
     }
+
 }

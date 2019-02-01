@@ -39,4 +39,5 @@ public class Customer implements Model {
         this.bussinesArea = bussinesArea;
     }
 
+
 }
