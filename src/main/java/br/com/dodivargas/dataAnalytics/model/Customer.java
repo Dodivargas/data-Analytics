@@ -1,7 +1,5 @@
 package br.com.dodivargas.dataAnalytics.model;
 
-import java.util.regex.Matcher;
-
 public class Customer implements Model {
 
     private String cnpj;
@@ -41,9 +39,4 @@ public class Customer implements Model {
         this.bussinesArea = bussinesArea;
     }
 
-
-    @Override
-    public Model parse(Matcher matcher) {
-        return new Customer(matcher.group(1), matcher.group(2), matcher.group(3));
-    }
 }

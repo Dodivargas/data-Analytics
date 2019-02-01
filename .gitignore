@@ -8,7 +8,6 @@
 .idea
 out
 gradle/
-settings.gradle
 # Log file
 *.log
 
