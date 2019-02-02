@@ -1,5 +1,8 @@
 package br.com.dodivargas.dataAnalytics.model;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Customer implements Model {
 
     private String id;
@@ -7,11 +10,18 @@ public class Customer implements Model {
     private String name;
     private String bussinesArea;
 
+    public Customer() {
+    }
+
     public Customer(String id, String cnpj, String name, String bussinesArea) {
         this.id = id;
         this.cnpj = cnpj;
         this.name = name;
         this.bussinesArea = bussinesArea;
+    }
+
+    public List<Customer> getCustomers(List<Model> models) {
+        return models.stream().filter(model -> model.getClass().equals(Customer.class)).map(customer -> (Customer) customer).collect(Collectors.toList());
     }
 
     public String getId() {

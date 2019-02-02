@@ -24,25 +24,13 @@ public class ParseService {
         this.parseFactory = parseFactory;
     }
 
-    List<Model> getModels(Path file) throws IOException {
+    List<Model> parseModels(Path file) throws IOException {
         return Files.lines(file)
                 .filter(StringUtils::isNotBlank)
                 .map(this::getModelFactory)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
-    }
-
-    List<Model> getCustomer(List<Model> models) {
-        return models.stream().filter(model -> model.getClass().equals(Customer.class)).collect(Collectors.toList());
-    }
-
-    List<Model> getSalesman(List<Model> models) {
-        return models.stream().filter(model -> model.getClass().equals(Salesman.class)).collect(Collectors.toList());
-    }
-
-    List<Model> getSale(List<Model> models) {
-        return models.stream().filter(model -> model.getClass().equals(Sale.class)).collect(Collectors.toList());
     }
 
     private Optional<Model> getModelFactory(String line) {

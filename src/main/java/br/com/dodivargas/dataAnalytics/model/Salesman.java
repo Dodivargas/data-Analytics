@@ -1,17 +1,28 @@
 package br.com.dodivargas.dataAnalytics.model;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Salesman implements Model {
 
     private String id;
     private String cpf;
     private String name;
-    private String salary;
+    private BigDecimal salary;
 
-    public Salesman(String id, String cpf, String name, String salary) {
+    public Salesman() {
+    }
+
+    public Salesman(String id, String cpf, String name, BigDecimal salary) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
         this.salary = salary;
+    }
+
+    public List<Salesman> getSalesmans(List<Model> models) {
+        return models.stream().filter(model -> model.getClass().equals(Salesman.class)).map(salesman -> (Salesman) salesman).collect(Collectors.toList());
     }
 
     public String getId() {
@@ -38,11 +49,11 @@ public class Salesman implements Model {
         this.name = name;
     }
 
-    public String getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 }

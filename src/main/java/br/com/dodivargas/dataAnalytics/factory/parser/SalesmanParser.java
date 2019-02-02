@@ -4,6 +4,7 @@ import br.com.dodivargas.dataAnalytics.model.Model;
 import br.com.dodivargas.dataAnalytics.model.Salesman;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,7 +17,7 @@ public class SalesmanParser implements LineParser {
     @Override
     public Optional<Model> parse(String line) {
         Matcher matcher = getMatcher(line);
-        return Optional.of(new Salesman(matcher.group(1), matcher.group(2), matcher.group(3),matcher.group(4)));
+        return Optional.of(new Salesman(matcher.group(1), matcher.group(2), matcher.group(3), new BigDecimal(matcher.group(4))));
     }
 
     @Override

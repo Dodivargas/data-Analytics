@@ -5,6 +5,7 @@ import br.com.dodivargas.dataAnalytics.model.Sale;
 import br.com.dodivargas.dataAnalytics.model.SaleItem;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +37,7 @@ public class SaleParser implements LineParser {
     }
 
     private SaleItem getSaleItem(Matcher matcher) {
-        return new SaleItem(matcher.group(1), matcher.group(2), matcher.group(3));
+        return new SaleItem(matcher.group(1), matcher.group(2), new BigDecimal(matcher.group(3)));
     }
 
     private Matcher getMatcher(String line, String regex) {
