@@ -2,17 +2,24 @@ package br.com.dodivargas.dataAnalytics.model;
 
 public class Customer implements Model {
 
+    private String id;
     private String cnpj;
     private String name;
     private String bussinesArea;
 
-    public Customer() {
-    }
-
-    public Customer(String cnpj, String name, String bussinesArea) {
+    public Customer(String id, String cnpj, String name, String bussinesArea) {
+        this.id = id;
         this.cnpj = cnpj;
         this.name = name;
         this.bussinesArea = bussinesArea;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCnpj() {

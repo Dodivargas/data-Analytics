@@ -16,7 +16,7 @@ public class SalesmanParser implements LineParser {
     @Override
     public Optional<Model> parse(String line) {
         Matcher matcher = getMatcher(line);
-        return Optional.of(new Salesman(matcher.group(1), matcher.group(2), matcher.group(3)));
+        return Optional.of(new Salesman(matcher.group(1), matcher.group(2), matcher.group(3),matcher.group(4)));
     }
 
     @Override

@@ -1,31 +1,36 @@
 package br.com.dodivargas.dataAnalytics.service;
 
-import br.com.dodivargas.dataAnalytics.factory.ParseFactory;
 import br.com.dodivargas.dataAnalytics.model.Model;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
 
 
 @Service
 public class ProcessorService {
 
-    private ParseFactory parseFactory;
+    private ParseService parseService;
 
-    public ProcessorService(ParseFactory parseFactory) {
-        this.parseFactory = parseFactory;
+    public ProcessorService(ParseService parseService) {
+        this.parseService = parseService;
     }
 
-    public Optional<Model> processorLine(String line) {
+    public void fileProcess(Path file) {
         try {
-            return parseFactory.get()
-                    .filter(parseFactory -> parseFactory.isElegible(line))
-                    .findFirst()
-                    .orElseThrow(() -> new Exception("Not such parser for this line"))
-                    .parse(line);
-        } catch (Exception e) {
+            List<Model> models = parseService.getModels(file);
+
+            List<Model> customers = parseService.getCustomer(models);
+            List<Model> salesmans = parseService.getSalesman(models);
+            List<Model> sale = parseService.getSale(models);
+
+
+
+
+        } catch (IOException e) {
             e.printStackTrace();
-            return Optional.empty();
         }
     }
+
 }

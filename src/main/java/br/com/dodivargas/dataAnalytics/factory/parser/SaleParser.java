@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 public class SaleParser implements LineParser {
 
     private static final String SALE_PATTERN = "^(003)ç([0-9]{0,})ç(\\[[0-9\\-\\,\\.]+\\])ç([\\s\\S]+)";
-    public static final String SALES_ITENS_PATTERN = "(([0-9]+)-([0-9]+)-([0-9]*\\.?[0-9]+))+";
+    private static final String SALES_ITENS_PATTERN = "([-+]?[0-9]*\\.?[0-9]*)-([-+]?[0-9]*\\.?[0-9]*)-([-+]?[0-9]*\\.?[0-9]*)";
 
     @Override
     public Optional<Model> parse(String line) {
         Matcher matcher = getMatcher(line, SALE_PATTERN);
-        return Optional.of(new Sale(matcher.group(2), getSaleItem(matcher.group(3)), matcher.group(4)));
+        return Optional.of(new Sale(matcher.group(1), matcher.group(2), getSaleItem(matcher.group(3)), matcher.group(4)));
     }
 
     @Override
