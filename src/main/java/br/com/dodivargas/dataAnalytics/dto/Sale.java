@@ -1,4 +1,4 @@
-package br.com.dodivargas.dataAnalytics.model;
+package br.com.dodivargas.dataAnalytics.dto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 public class Sale implements Model {
 
     private String id;
-    private String saleId;
+    private Integer saleId;
     private List<SaleItem> saleItems;
     private String salesmanName;
 
     public Sale() {
     }
 
-    public Sale(String id, String saleId, List<SaleItem> saleItems, String salesmanName) {
+    public Sale(String id, Integer saleId, List<SaleItem> saleItems, String salesmanName) {
         this.id = id;
         this.saleId = saleId;
         this.saleItems = saleItems;
@@ -32,11 +32,11 @@ public class Sale implements Model {
         this.id = id;
     }
 
-    public String getSaleId() {
+    public Integer getSaleId() {
         return saleId;
     }
 
-    public void setSaleId(String saleId) {
+    public void setSaleId(Integer saleId) {
         this.saleId = saleId;
     }
 

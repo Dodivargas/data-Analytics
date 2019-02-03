@@ -1,4 +1,4 @@
-package br.com.dodivargas.dataAnalytics.model;
+package br.com.dodivargas.dataAnalytics.dto;
 
 import java.math.BigDecimal;
 import java.util.List;

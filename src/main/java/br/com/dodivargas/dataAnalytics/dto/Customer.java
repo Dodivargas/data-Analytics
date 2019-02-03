@@ -1,4 +1,4 @@
-package br.com.dodivargas.dataAnalytics.model;
+package br.com.dodivargas.dataAnalytics.dto;
 
 import java.util.List;
 import java.util.stream.Collectors;

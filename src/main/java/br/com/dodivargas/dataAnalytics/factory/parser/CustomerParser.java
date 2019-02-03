@@ -1,7 +1,7 @@
 package br.com.dodivargas.dataAnalytics.factory.parser;
 
-import br.com.dodivargas.dataAnalytics.model.Customer;
-import br.com.dodivargas.dataAnalytics.model.Model;
+import br.com.dodivargas.dataAnalytics.dto.Model;
+import br.com.dodivargas.dataAnalytics.dto.builder.CustomerBuilder;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -16,7 +16,13 @@ public class CustomerParser implements LineParser {
     @Override
     public Optional<Model> parse(String line) {
         Matcher matcher = getMatcher(line);
-        return Optional.of(new Customer(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4)));
+        return Optional.of(new CustomerBuilder()
+                .builder()
+                .id(matcher.group(1))
+                .cnpj(matcher.group(2))
+                .name(matcher.group(3))
+                .bussinesArea(matcher.group(4))
+                .build());
     }
 
     @Override

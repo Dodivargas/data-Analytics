@@ -1,7 +1,7 @@
 package br.com.dodivargas.dataAnalytics.factory.parser;
 
-import br.com.dodivargas.dataAnalytics.model.Model;
-import br.com.dodivargas.dataAnalytics.model.Salesman;
+import br.com.dodivargas.dataAnalytics.dto.Model;
+import br.com.dodivargas.dataAnalytics.dto.builder.SalesmanBuilder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -17,7 +17,13 @@ public class SalesmanParser implements LineParser {
     @Override
     public Optional<Model> parse(String line) {
         Matcher matcher = getMatcher(line);
-        return Optional.of(new Salesman(matcher.group(1), matcher.group(2), matcher.group(3), new BigDecimal(matcher.group(4))));
+        return Optional.of(new SalesmanBuilder()
+                .builder()
+                .id(matcher.group(1))
+                .cpf(matcher.group(2))
+                .name(matcher.group(3))
+                .salary(new BigDecimal(matcher.group(4)))
+                .build());
     }
 
     @Override

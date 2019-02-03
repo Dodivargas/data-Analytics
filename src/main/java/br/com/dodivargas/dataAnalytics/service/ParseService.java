@@ -1,16 +1,10 @@
 package br.com.dodivargas.dataAnalytics.service;
 
+import br.com.dodivargas.dataAnalytics.dto.Model;
 import br.com.dodivargas.dataAnalytics.factory.ParseFactory;
-import br.com.dodivargas.dataAnalytics.model.Customer;
-import br.com.dodivargas.dataAnalytics.model.Model;
-import br.com.dodivargas.dataAnalytics.model.Sale;
-import br.com.dodivargas.dataAnalytics.model.Salesman;
 import br.com.dodivargas.dataAnalytics.util.StringUtils;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,8 +18,8 @@ public class ParseService {
         this.parseFactory = parseFactory;
     }
 
-    List<Model> parseModels(Path file) throws IOException {
-        return Files.lines(file)
+    List<Model> parseModels(List<String> lines) {
+        return lines.stream()
                 .filter(StringUtils::isNotBlank)
                 .map(this::getModelFactory)
                 .filter(Optional::isPresent)

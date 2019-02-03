@@ -1,25 +1,22 @@
-package br.com.dodivargas.dataAnalytics.model;
+package br.com.dodivargas.dataAnalytics.dto;
 
 import java.math.BigDecimal;
 
 public class SaleItem {
 
-    private String itemId;
+    private String id;
     private String itemQuantity;
     private BigDecimal itemPrice;
 
-    public SaleItem(String itemId, String itemQuantity, BigDecimal itemPrice) {
-        this.itemId = itemId;
-        this.itemQuantity = itemQuantity;
-        this.itemPrice = itemPrice;
+    public SaleItem() {
     }
 
-    public String getItemId() {
-        return itemId;
+    public String getId() {
+        return id;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getItemQuantity() {
