@@ -1,6 +1,6 @@
 package br.com.dodivargas.dataAnalytics;
 
-import br.com.dodivargas.dataAnalytics.job.FileWatcher;
+import br.com.dodivargas.dataAnalytics.watcher.FileWatcher;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
