@@ -2,23 +2,14 @@ package br.com.dodivargas.dataAnalytics.service;
 
 import br.com.dodivargas.dataAnalytics.dto.Customer;
 import br.com.dodivargas.dataAnalytics.dto.Sale;
-import br.com.dodivargas.dataAnalytics.dto.SaleItem;
 import br.com.dodivargas.dataAnalytics.dto.Salesman;
-import br.com.dodivargas.dataAnalytics.dto.builder.CustomerBuilder;
-import br.com.dodivargas.dataAnalytics.dto.builder.SaleBuilder;
-import br.com.dodivargas.dataAnalytics.dto.builder.SaleItemBuilder;
-import br.com.dodivargas.dataAnalytics.dto.builder.SalesmanBuilder;
 import br.com.dodivargas.dataAnalytics.stubs.ModelsStubs;
 import org.junit.Test;
-import org.mockito.Mock;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.mock;
 
 public class MetricsServiceTest {
 

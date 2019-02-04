@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -96,6 +97,20 @@ public class ParseServiceTest {
 
 
         assertTrue(parseService.parseModels(lines).isEmpty());
+    }
+
+    @Test
+    public void parseModelsForBlankLine() {
+        when(customerParser.isElegible(any())).thenReturn(false);
+        when(customerParser.parse(any())).thenReturn(Optional.empty());
+        when(parseFactory.get()).thenReturn(Stream.of(customerParser, salesmanParser, saleParser));
+
+        List<String> lines = new ArrayList<>();
+        lines.add("");
+
+        List<Model> models = parseService.parseModels(lines);
+
+        assertEquals(0, models.size());
     }
 
 

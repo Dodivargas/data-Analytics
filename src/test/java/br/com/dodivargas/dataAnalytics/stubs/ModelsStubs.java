@@ -31,9 +31,9 @@ public class ModelsStubs {
     public static Customer getCustomer() {
         return new CustomerBuilder().builder()
                 .id("002")
-                .cnpj("12345678910123")
-                .name("paulo")
-                .bussinesArea("rural")
+                .cnpj("1234567891023123")
+                .name("Paulo")
+                .bussinesArea("Rural")
                 .build();
     }
 
@@ -52,7 +52,7 @@ public class ModelsStubs {
                 .id("003")
                 .saleId(1)
                 .saleItems(getSaleItemsPedro())
-                .salesmanName("pedro")
+                .salesmanName("Pedro")
                 .build();
     }
 
