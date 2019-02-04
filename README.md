@@ -23,7 +23,7 @@ Create a file from .dat extension and put them in user.home/data/in:
 
 ## Output Example
 
-after processing, the system writes the output file in directory user.home/data/out with the same name as the input file:
+after processing, the system writes the output file in directory user.home/data/out with the same name as the input file adding .done.dat:
 
 ### File body
 
