@@ -12,6 +12,18 @@ Data-Analytics catch a files from user.home/data/in directory and process them a
 
 Create a file from .dat extension and put them in user.home/data/in:
 
+### Salesman data
+
+001çCPFçNameçSalary
+
+### Customer data
+
+002çCNPJçNameçBusiness Area
+
+#### Sale data
+
+003çSale IDç[Item ID-Item Quantity-Item Price]çSalesman name
+
 ### File body
 
 001ç1234567891234çPedroç50000  
