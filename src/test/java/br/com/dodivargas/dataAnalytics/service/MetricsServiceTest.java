@@ -35,7 +35,7 @@ public class MetricsServiceTest {
         salesman.add(ModelsStubs.getSalesman());
         salesman.add(ModelsStubs.getSalesman());
         salesman.add(ModelsStubs.getSalesman());
-        assertEquals(Integer.valueOf(3), metricsService.getSalesamnQuantity(salesman));
+        assertEquals(Integer.valueOf(3), metricsService.getSalesmanQuantity(salesman));
 
     }
 

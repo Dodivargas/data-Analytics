@@ -19,7 +19,7 @@ class MetricsService {
         return customers.size();
     }
 
-    Integer getSalesamnQuantity(List<Salesman> salesmans) {
+    Integer getSalesmanQuantity(List<Salesman> salesmans) {
         return salesmans.size();
     }
 

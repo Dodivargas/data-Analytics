@@ -1,6 +1,6 @@
 package br.com.dodivargas.dataAnalytics.watcher;
 
-import br.com.dodivargas.dataAnalytics.service.ProcessorService;
+import br.com.dodivargas.dataAnalytics.service.ProcessService;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
@@ -15,12 +15,12 @@ import java.io.File;
 @Component
 public class FileWatcher {
 
-    private static ProcessorService processorService;
+    private static ProcessService processService;
     private static String pathIn;
     private static String fileNameIn;
 
-    public FileWatcher(ProcessorService processorService, @Value("${app.files.directory.pathIn}") String pathIn, @Value("${app.files.nameFile.in}") String fileNameIn) {
-        FileWatcher.processorService = processorService;
+    public FileWatcher(ProcessService processService, @Value("${app.files.directory.pathIn}") String pathIn, @Value("${app.files.nameFile.in}") String fileNameIn) {
+        FileWatcher.processService = processService;
         FileWatcher.pathIn = pathIn;
         FileWatcher.fileNameIn = fileNameIn;
     }
@@ -33,7 +33,7 @@ public class FileWatcher {
             public void onFileCreate(File file) {
                 try {
                     if (file.toPath().endsWith(fileNameIn)) {
-                        processorService.fileProcess(FileUtils.readLines(file, "UTF-8"), file.getName().replace(fileNameIn, ""));
+                        processService.fileProcess(FileUtils.readLines(file, "UTF-8"), file.getName().replace(fileNameIn, ""));
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -44,7 +44,7 @@ public class FileWatcher {
             public void onFileChange(File file) {
                 try {
                     if (file.toString().endsWith(fileNameIn)) {
-                        processorService.fileProcess(FileUtils.readLines(file, "UTF-8"), file.getName().replace(fileNameIn, ""));
+                        processService.fileProcess(FileUtils.readLines(file, "UTF-8"), file.getName().replace(fileNameIn, ""));
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

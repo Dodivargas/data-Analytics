@@ -14,10 +14,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class ProcessorServiceTest {
+public class ProcessServiceTest {
 
     @InjectMocks
-    private ProcessorService processorService;
+    private ProcessService processService;
     @Mock
     private ParseService parseService;
     @Mock
@@ -29,11 +29,11 @@ public class ProcessorServiceTest {
     public void fileProcess() {
         when(parseService.parseModels(any())).thenReturn(ModelsStubs.getModels());
         String fileName = "file";
-        processorService.fileProcess(ModelsStubs.getInputFileLines(), fileName);
+        processService.fileProcess(ModelsStubs.getInputFileLines(), fileName);
 
         Mockito.verify(parseService, times(1)).parseModels(Mockito.any());
         Mockito.verify(metricsService, times(1)).getCustomerQuantity(Mockito.any());
-        Mockito.verify(metricsService, times(1)).getSalesamnQuantity(Mockito.any());
+        Mockito.verify(metricsService, times(1)).getSalesmanQuantity(Mockito.any());
         Mockito.verify(metricsService, times(1)).mostExpansiveSale(Mockito.any());
         Mockito.verify(metricsService, times(1)).worstSalesman(Mockito.any());
         Mockito.verify(fileWriter, times(1)).writeFile(Mockito.any(), Mockito.any());
