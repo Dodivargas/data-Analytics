@@ -25,7 +25,7 @@ class MetricsService {
 
     Integer mostExpansiveSale(List<Sale> sales) {
         Map<Integer, BigDecimal> salePrice = sales.stream()
-                .collect(Collectors.toMap(Sale::getSaleId, x -> getSalePrice(x.getSaleItems())));
+                .collect(Collectors.toMap(Sale::getSaleId, x -> getSalePrice(x.getSaleItems()), (sale1, sale2) -> sale1));
         return Collections.max(salePrice.entrySet(), Map.Entry.comparingByValue()).getKey();
     }
 
