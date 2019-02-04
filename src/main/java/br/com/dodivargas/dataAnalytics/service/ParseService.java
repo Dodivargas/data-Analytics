@@ -6,6 +6,7 @@ import br.com.dodivargas.dataAnalytics.util.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class ParseService {
             return parseFactory.get()
                     .filter(parseFactory -> parseFactory.isElegible(line))
                     .findFirst()
-                    .orElseThrow(() -> new Exception("Not such parser for this line"))
+                    .orElseThrow(() -> new NoSuchElementException("Not such parser for this line"))
                     .parse(line);
         } catch (Exception e) {
             e.printStackTrace();

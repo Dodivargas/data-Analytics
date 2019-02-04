@@ -13,13 +13,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class MetricsService {
+class MetricsService {
 
-    public Integer getCustomerQuantity(List<Customer> customers) {
+    Integer getCustomerQuantity(List<Customer> customers) {
         return customers.size();
     }
 
-    public Integer getSalesamnQuantity(List<Salesman> salesmans) {
+    Integer getSalesamnQuantity(List<Salesman> salesmans) {
         return salesmans.size();
     }
 

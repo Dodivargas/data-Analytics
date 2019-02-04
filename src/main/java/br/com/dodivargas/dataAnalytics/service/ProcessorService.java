@@ -2,6 +2,7 @@ package br.com.dodivargas.dataAnalytics.service;
 
 import br.com.dodivargas.dataAnalytics.dto.*;
 import br.com.dodivargas.dataAnalytics.dto.builder.DataAnalysisBuilder;
+import br.com.dodivargas.dataAnalytics.watcher.FileWriter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,12 +12,13 @@ public class ProcessorService {
 
     private ParseService parseService;
     private MetricsService metricsService;
-    private WriterService writerService;
+    private FileWriter fileWriter;
 
-    public ProcessorService(ParseService parseService, MetricsService metricsService, WriterService writerService) {
+
+    public ProcessorService(ParseService parseService, MetricsService metricsService, FileWriter fileWriter) {
         this.parseService = parseService;
         this.metricsService = metricsService;
-        this.writerService = writerService;
+        this.fileWriter = fileWriter;
     }
 
     public void fileProcess(List<String> lines, String fileName) {
@@ -33,7 +35,7 @@ public class ProcessorService {
                 .worstSalesman(sales.size() != 0 ? metricsService.worstSalesman(sales) : "")
                 .build();
 
-        writerService.writeFile(dataAnalysis, fileName);
+        fileWriter.writeFile(dataAnalysis, fileName);
     }
 
 }

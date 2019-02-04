@@ -6,6 +6,7 @@ import br.com.dodivargas.dataAnalytics.dto.SaleItem;
 import java.util.List;
 
 public class SaleBuilder {
+
     private Sale sale;
 
     public SaleBuilder() {
