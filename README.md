@@ -20,7 +20,7 @@ Create a file from .dat extension and put them in user.home/data/in:
 
 002çCNPJçNameçBusiness Area
 
-#### Sale data
+### Sale data
 
 003çSale IDç[Item ID-Item Quantity-Item Price]çSalesman name
 
